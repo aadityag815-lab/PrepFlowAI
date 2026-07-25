@@ -63,6 +63,7 @@ const Analytics = () => {
       ]
     : [];
 
+  // eslint-disable-next-line no-unused-vars
   const dsaStatusData = dsaStats
     ? [
         { name: "Solved", value: dsaStats.solved },

@@ -95,6 +95,7 @@ const DSATracker = () => {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchProblems();
   }, [filters]);
