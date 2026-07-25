@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   getResumes,
   uploadResume,
-  updateResume,
   deleteResume,
   setDefaultResume,
 } from "../utils/api";
