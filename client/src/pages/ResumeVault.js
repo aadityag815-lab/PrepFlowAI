@@ -101,6 +101,23 @@ const ResumeVault = () => {
     }
   };
 
+  const handleDownload = async (resume) => {
+    try {
+      const response = await fetch(resume.fileUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${resume.title.replace(/[^a-zA-Z0-9]/g, "_")}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      toast.error("Failed to download");
+    }
+  };
+
   const formatDate = (date) =>
     new Date(date).toLocaleDateString("en-IN", {
       day: "numeric",
@@ -630,13 +647,8 @@ const ResumeVault = () => {
                 </p>
 
                 <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                  <a
-                    href={resume.fileUrl.replace(
-                      "/upload/",
-                      `/upload/fl_attachment:${resume.title.replace(/[^a-zA-Z0-9]/g, "_")}.pdf/`,
-                    )}
-                    target="_blank"
-                    rel="noreferrer"
+                  <button
+                    onClick={() => handleDownload(resume)}
                     style={{
                       padding: "6px 14px",
                       fontSize: "12px",
@@ -645,11 +657,11 @@ const ResumeVault = () => {
                       border: "1px solid rgba(99,102,241,0.2)",
                       borderRadius: "7px",
                       color: "#818cf8",
-                      textDecoration: "none",
+                      cursor: "pointer",
                     }}
                   >
                     View
-                  </a>
+                  </button>
                   {!resume.isDefault && (
                     <button
                       onClick={() => handleSetDefault(resume._id)}
