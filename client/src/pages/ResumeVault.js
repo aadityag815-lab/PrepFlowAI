@@ -631,10 +631,12 @@ const ResumeVault = () => {
 
                 <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
                   <a
-                    href={resume.fileUrl}
+                    href={resume.fileUrl.replace(
+                      "/upload/",
+                      "/upload/fl_attachment:resume/",
+                    )}
                     target="_blank"
                     rel="noreferrer"
-                    download={`${resume.title}.pdf`}
                     style={{
                       padding: "6px 14px",
                       fontSize: "12px",

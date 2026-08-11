@@ -15,10 +15,7 @@ const storage = new CloudinaryStorage({
     allowed_formats: ["pdf"],
     resource_type: "raw",
     format: "pdf",
-    public_id: (req, file) => {
-      const filename = file.originalname.replace(/\.[^/.]+$/, "");
-      return `${Date.now()}_${filename}`;
-    },
+    public_id: (req, file) => `resume_${Date.now()}`,
   },
 });
 
