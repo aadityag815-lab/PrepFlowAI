@@ -633,7 +633,7 @@ const ResumeVault = () => {
                   <a
                     href={resume.fileUrl.replace(
                       "/upload/",
-                      `/upload/fl_attachment:${resume.title.replace(/[^a-zA-Z0-9]/g, "_")}/`,
+                      `/upload/fl_attachment:${resume.title.replace(/[^a-zA-Z0-9]/g, "_")}.pdf/`,
                     )}
                     target="_blank"
                     rel="noreferrer"
